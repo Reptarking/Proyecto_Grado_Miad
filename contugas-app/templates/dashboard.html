@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard General - Contugas{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4 text-center">Dashboard General - Consumo de Gas y Anomalías</h1>
+    
+    <!-- Fila 1: KPIs principales -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card shadow-sm p-3 mb-3 bg-white rounded text-center">
+                <h5>Total Clientes</h5>
+                <h2 class="text-primary">{{ total_clientes }}</h2>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm p-3 mb-3 bg-white rounded text-center">
+                <h5>Total Anomalías</h5>
+                <h2 class="text-danger">{{ total_anomalias }}</h2>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm p-3 mb-3 bg-white rounded text-center">
+                <h5>Consumo Total</h5>
+                <h2 class="text-success kpi-number">{{ consumo_total | round(2) }}</h2>
+                <span class="text-muted">[m³]</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fila 2: KPIs adicionales -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card shadow-sm p-3 mb-3 bg-white rounded text-center">
+                <h5>Total Lecturas Evaluadas</h5>
+                <h2 class="text-primary">{{ total_lecturas }}</h2>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow-sm p-3 mb-3 bg-white rounded text-center">
+                <h5>% de Anomalías</h5>
+                <h2 class="text-danger">{{ porcentaje_anomalias | round(2) }}%</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gráfico resumen -->
+    <div class="card shadow-sm p-4 mb-4 bg-white rounded">
+        <h5 class="mb-3">Resumen Histórico de Consumo y Anomalías</h5>
+        <div>
+            <iframe title="PBI Indicadores LARAIGO" 
+                width="100%" 
+                height="573.5" 
+                src="https://app.powerbi.com/view?r=eyJrIjoiZWQ3OGVlY2QtMTQ5ZC00N2RjLWIzNzMtNGZmYTU0ZGFmNDFkIiwidCI6IjZiMzMzNzllLTJhMGUtNGFkYy1iMWRlLWU0ZDZiMzFkYmViMSIsImMiOjR9" 
+                frameborder="0" 
+                allowFullScreen="true">
+            </iframe>
+        </div>
+    </div>
+
+    <!-- Panel de integrantes -->
+    <div class="card shadow-sm p-4 mb-4 bg-white rounded">
+        <h5 class="mb-3">Integrantes</h5>
+        <ul>
+            <li>Carolina Castellano</li>            
+            <li>Juan Diego Saquicoray</li>
+            <li>Wilfredo Daza Diaz</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
